@@ -1,9 +1,5 @@
-# nextjs-template
-Simple and clean template without anything extra. Just NextJS and TailwindCSS.
+# html-canvas-deep-dive-for-beginners
 
-Demo - https://nextjs-template-one-mu.vercel.app/
+Tutorial - https://www.youtube.com/watch?v=uCH1ta5OUHw&list=PL64xzZRwmsJOM2qqUIGSGBrWP5mNVkV4I&index=1
 
-## Tech Stack
-- TypeScript
-- Next.js
-- Tailwind CSS
+Some aditional article - https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
