@@ -1,4 +1,4 @@
-# html-canvas-deep-dive-for-beginners
+# HTML Canvas DEEP DIVE for Beginners
 
 Tutorial - https://www.youtube.com/watch?v=uCH1ta5OUHw&list=PL64xzZRwmsJOM2qqUIGSGBrWP5mNVkV4I&index=1
 
