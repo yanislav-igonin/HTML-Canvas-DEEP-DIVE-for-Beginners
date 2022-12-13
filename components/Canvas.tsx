@@ -9,7 +9,11 @@ const Canvas = (props: Props) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillStyle = '#000000';
     ctx.beginPath();
-    ctx.arc(50, 100, 20*Math.sin(frameCount*0.05)**2, 0, 2*Math.PI);
+    const x = ctx.canvas.width / 2;
+    const y = ctx.canvas.height / 2;
+    const radius = 200 * Math.sin(frameCount * 0.01) ** 2;
+    const endAngle = 2 * Math.PI;
+    ctx.arc(x, y, radius, 0, endAngle);
     ctx.fill();
   };
   
