@@ -1,17 +1,24 @@
 import { useRef, useEffect, type DetailedHTMLProps, type CanvasHTMLAttributes } from 'react';
 
 type Props = DetailedHTMLProps<CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>
- & { draw: (ctx: CanvasRenderingContext2D, frameCount: number) => void };
+  & { draw: (ctx: CanvasRenderingContext2D, frameCount: number) => void };
 
 export const Canvas = ({ draw, ...props }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  window.addEventListener('resize', () => {
-    const canvas = canvasRef.current as HTMLCanvasElement;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-  
+  useEffect(() => {
+    const resize = () => {
+      const canvas = canvasRef.current as HTMLCanvasElement;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', resize);
+
+    return () => {
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
   useEffect(() => {
     const canvas = canvasRef.current as HTMLCanvasElement;
     canvas.width = window.innerWidth;
@@ -19,7 +26,7 @@ export const Canvas = ({ draw, ...props }: Props) => {
     const context = canvas?.getContext('2d') as CanvasRenderingContext2D;
     let frameCount = 0;
     let animationFrameId: number;
-    
+
     //Our draw came here
     const render = () => {
       frameCount++;
@@ -27,11 +34,11 @@ export const Canvas = ({ draw, ...props }: Props) => {
       animationFrameId = window.requestAnimationFrame(render);
     };
     render();
-    
+
     return () => {
       window.cancelAnimationFrame(animationFrameId);
     };
   });
-  
-  return <canvas ref={canvasRef} {...props}/>;
+
+  return <canvas ref={canvasRef} {...props} />;
 };
