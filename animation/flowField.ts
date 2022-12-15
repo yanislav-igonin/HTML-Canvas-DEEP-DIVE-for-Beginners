@@ -6,7 +6,7 @@ export const flowField = (ctx: CanvasRenderingContext2D, frameCount: number) => 
   ctx.moveTo(x, y);
   x += length;
   y += length;
-  ctx.lineTo(x, y);
+  ctx.lineTo(x * 0.2, y * 0.6);
   ctx.stroke();
 
   if (x > ctx.canvas.width || y > ctx.canvas.height) {
