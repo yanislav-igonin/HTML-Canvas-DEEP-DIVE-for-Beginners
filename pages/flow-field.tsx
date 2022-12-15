@@ -1,10 +1,10 @@
 import { Canvas, Layout } from '@components';
-import { pulse } from 'animation';
+import { flowField } from 'animation';
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return <Layout>
-    <Canvas draw={pulse} />
+    <Canvas draw={flowField} />
   </Layout>;
 };
 

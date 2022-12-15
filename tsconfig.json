@@ -17,7 +17,7 @@
     "paths": {
       "@components": ["components"],
       "@components/*": ["components/*"],
-      "@animations/*": ["animations/*"]
+      "@animations": ["animations"]
     },
     "baseUrl": "./",
   },

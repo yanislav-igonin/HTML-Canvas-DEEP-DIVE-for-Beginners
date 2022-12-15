@@ -3,8 +3,7 @@ import { useRef, useEffect, type DetailedHTMLProps, type CanvasHTMLAttributes } 
 type Props = DetailedHTMLProps<CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>
  & { draw: (ctx: CanvasRenderingContext2D, frameCount: number) => void };
 
-export const Canvas = (props: Props) => {
-  const { draw } = props;
+export const Canvas = ({ draw, ...props }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
   useEffect(() => {
