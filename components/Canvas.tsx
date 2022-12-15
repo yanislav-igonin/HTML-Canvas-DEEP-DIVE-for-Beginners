@@ -5,6 +5,12 @@ type Props = DetailedHTMLProps<CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanv
 
 export const Canvas = ({ draw, ...props }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  window.addEventListener('resize', () => {
+    const canvas = canvasRef.current as HTMLCanvasElement;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
   
   useEffect(() => {
     const canvas = canvasRef.current as HTMLCanvasElement;
