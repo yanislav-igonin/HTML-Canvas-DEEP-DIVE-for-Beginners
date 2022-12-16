@@ -14,12 +14,6 @@ export const flowField = (ctx: CanvasRenderingContext2D, frameCount: number) => 
   ctx.lineTo(x + length, y + length);
   ctx.stroke();
 
-  // if (x > ctx.canvas.width || y > ctx.canvas.height) {
-  //   x = 0;
-  //   y = 0;
-  //   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  // }
-
   if (frameCount % 100 === 0) {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   }
