@@ -10,6 +10,7 @@ export const collider = (ctx: CanvasRenderingContext2D, frameCount: number) => {
 
   x = centerX + Math.sin(frameCount) * 100;
   y = centerY + Math.cos(frameCount) * 100;
+  
   ctx.beginPath();
   ctx.moveTo(x, y);
   ctx.lineTo(x + length, y + length);

@@ -8,6 +8,11 @@ type Props = DetailedHTMLProps<CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanv
 
 export const Canvas = ({ draw, mouseMove, ...props }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  let lastTime = 0;
+  // delta time counter
+  let timer = 0;
+  // 60 fps
+  const interval = 1000 / 60;
 
   useEffect(() => {
     const resize = () => {
@@ -39,13 +44,20 @@ export const Canvas = ({ draw, mouseMove, ...props }: Props) => {
     let frameCount = 0;
     let animationFrameId: number;
 
-    //Our draw came here
-    const render = () => {
-      frameCount++;
-      draw(context, frameCount);
+    // Our draw came here
+    const render = (timestamp: number) => {
+      const deltaTime = timestamp - lastTime;
+      lastTime = timestamp;
+      if (timer > interval) {
+        frameCount++;
+        draw(context, frameCount);
+        timer = 0;
+      } else {
+        timer += deltaTime;
+      }
       animationFrameId = window.requestAnimationFrame(render);
     };
-    render();
+    render(0);
 
     return () => {
       window.cancelAnimationFrame(animationFrameId);
