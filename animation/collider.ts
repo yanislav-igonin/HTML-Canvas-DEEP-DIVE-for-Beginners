@@ -2,7 +2,7 @@ let x = 0;
 let y = 0;
 let length = 100;
 
-export const flowField = (ctx: CanvasRenderingContext2D, frameCount: number) => {
+export const collider = (ctx: CanvasRenderingContext2D, frameCount: number) => {
   const width = ctx.canvas.width;
   const height = ctx.canvas.height;
   const centerX = width / 2;

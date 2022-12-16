@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const links = [
   { href: '/', label: 'Pulse' },
-  { href: '/flow-field', label: 'Flow Field' },
+  { href: '/collider', label: 'Collider' },
 ];
 
 export const TopBar = () => <div className="fixed w-full h-16 flex items-center">
