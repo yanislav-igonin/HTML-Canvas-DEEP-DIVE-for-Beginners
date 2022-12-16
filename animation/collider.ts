@@ -21,6 +21,6 @@ export const collider = (ctx: CanvasRenderingContext2D, frameCount: number) => {
   }
 };
 
-export const mouseMove = (e: MouseEvent) => {
+export const mouseMoveCollider = (e: MouseEvent) => {
   length = Math.sin(e.clientX) * 100 + Math.cos(e.clientY) * 100;
 };

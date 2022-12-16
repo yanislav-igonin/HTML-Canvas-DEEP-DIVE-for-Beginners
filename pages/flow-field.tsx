@@ -1,10 +1,10 @@
 import { Canvas, Layout } from '@components';
-import { collider, mouseMove } from 'animation';
+import { flowField, mouseMoveFlowField } from 'animation';
 import type { NextPage } from 'next';
 
 const FlowFieldPage: NextPage = () => {
   return <Layout>
-    <Canvas draw={collider} mouseMove={mouseMove} />
+    <Canvas draw={flowField} mouseMove={mouseMoveFlowField} />
   </Layout>;
 };
 
