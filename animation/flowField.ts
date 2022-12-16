@@ -1,7 +1,8 @@
 let x = 0;
 let y = 0;
+let length = 100;
+
 export const flowField = (ctx: CanvasRenderingContext2D, frameCount: number) => {
-  const length = 100;
   const width = ctx.canvas.width;
   const height = ctx.canvas.height;
   const centerX = width / 2;
@@ -14,7 +15,12 @@ export const flowField = (ctx: CanvasRenderingContext2D, frameCount: number) => 
   ctx.lineTo(x + length, y + length);
   ctx.stroke();
 
-  if (frameCount % 100 === 0) {
+  if (frameCount % 1000 === 0) {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   }
+};
+
+export const mouseMove = (e: MouseEvent) => {
+  length = Math.sin(e.clientX) * 100 + Math.cos(e.clientY) * 100;
+  
 };

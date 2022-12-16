@@ -1,9 +1,12 @@
 import { useRef, useEffect, type DetailedHTMLProps, type CanvasHTMLAttributes } from 'react';
 
 type Props = DetailedHTMLProps<CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>
-  & { draw: (ctx: CanvasRenderingContext2D, frameCount: number) => void };
+  & {
+      draw: (ctx: CanvasRenderingContext2D, frameCount: number) => void,
+      mouseMove?: (e: MouseEvent) => void,
+    };
 
-export const Canvas = ({ draw, ...props }: Props) => {
+export const Canvas = ({ draw, mouseMove, ...props }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -18,6 +21,15 @@ export const Canvas = ({ draw, ...props }: Props) => {
       window.removeEventListener('resize', resize);
     };
   }, []);
+
+  useEffect(() => {
+    if (!mouseMove) return;
+    window.addEventListener('mousemove', mouseMove);
+    return () => {
+      window.removeEventListener('mousemove', mouseMove);
+    };
+  }, [mouseMove]);
+
 
   useEffect(() => {
     const canvas = canvasRef.current as HTMLCanvasElement;
