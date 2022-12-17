@@ -17,6 +17,9 @@ const createGradient = (ctx: CanvasRenderingContext2D) => {
   const { width, height } = ctx.canvas;
   const gradient = ctx.createLinearGradient(0, 0, width, height);
   gradient.addColorStop(0.1, 'red');
+  gradient.addColorStop(0.3, 'orange');
+  gradient.addColorStop(0.5, 'yellow');
+  gradient.addColorStop(0.7, 'green');
   gradient.addColorStop(0.9, 'blue');
   ctx.strokeStyle = gradient;
 };
