@@ -52,8 +52,8 @@ export const flowField = (ctx: CanvasRenderingContext2D, frameCount: number) => 
   for (let y = 0; y < ctx.canvas.height; y += cellSize) {
     for (let x = 0; x < ctx.canvas.width; x += cellSize) {
       const pointFrom = { x, y };
-      const distance = getDistance(pointFrom, pointMouse);
-      const length = distance / 5;
+      // const distance = getDistance(pointFrom, pointMouse);
+      const length = 20;
       const angle = (Math.cos(x * 0.005) + Math.sin(y * 0.005)) * radius;
       const toX = x + Math.cos(angle) * length;
       const toY = y + Math.sin(angle) * length;
