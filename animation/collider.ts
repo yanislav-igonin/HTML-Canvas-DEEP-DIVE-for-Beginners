@@ -7,10 +7,11 @@ export const collider = (ctx: CanvasRenderingContext2D, frameCount: number) => {
   const height = ctx.canvas.height;
   const centerX = width / 2;
   const centerY = height / 2;
-
+  
   x = centerX + Math.sin(frameCount) * 100;
   y = centerY + Math.cos(frameCount) * 100;
   
+  ctx.strokeStyle = 'white';
   ctx.beginPath();
   ctx.moveTo(x, y);
   ctx.lineTo(x + length, y + length);
@@ -18,6 +19,7 @@ export const collider = (ctx: CanvasRenderingContext2D, frameCount: number) => {
 
   if (frameCount % 1000 === 0) {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.fillStyle = 'white';
   }
 };
 
