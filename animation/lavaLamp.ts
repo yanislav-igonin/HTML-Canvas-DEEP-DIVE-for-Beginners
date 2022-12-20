@@ -33,13 +33,27 @@ class Ball {
     this.x += this.speedX;
     this.y += this.speedY;
   }
+
+  reset(newWidth: number, newHeight: number) {
+    if (newWidth !== this.canvasWidth || newHeight !== this.canvasHeight) {
+      this.canvasWidth = newWidth;
+      this.canvasHeight = newHeight;
+    }
+    this.x = this.canvasWidth * 0.5;
+    this.y = this.canvasHeight * 0.5;
+  }
 }
 
 const balls: Ball[] = [];
+let canvasWidth = 0;
+let canvasHeight = 0;
 
 export const lavaLamp = (ctx: CanvasRenderingContext2D, frameCount: number) => {
-  const canvasWidth = ctx.canvas.width;
-  const canvasHeight = ctx.canvas.height;
+  if (canvasWidth !== ctx.canvas.width || canvasHeight !== ctx.canvas.height) {
+    canvasWidth = ctx.canvas.width;
+    canvasHeight = ctx.canvas.height;
+    balls.forEach((ball) => ball.reset(canvasWidth, canvasHeight));
+  }
 
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
