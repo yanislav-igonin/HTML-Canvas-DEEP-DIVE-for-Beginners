@@ -4,6 +4,7 @@ const links = [
   { href: '/', label: 'Pulse' },
   { href: '/collider', label: 'Collider' },
   { href: '/flow-field', label: 'Flow Field' },
+  { href: '/lava-lamp', label: 'Lava Lamp' },
 ];
 
 export const TopBar = () => <div className="fixed w-full h-16 flex items-center">
