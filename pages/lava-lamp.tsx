@@ -1,10 +1,10 @@
 import { Canvas, Layout } from '@components';
-import { flowField, mouseMoveFlowField } from 'animation';
+import { lavaLamp } from 'animation';
 import type { NextPage } from 'next';
 
 const LavaLampPage: NextPage = () => {
   return <Layout>
-    <Canvas draw={flowField} mouseMove={mouseMoveFlowField} />
+    <Canvas draw={lavaLamp} />
   </Layout>;
 };
 
