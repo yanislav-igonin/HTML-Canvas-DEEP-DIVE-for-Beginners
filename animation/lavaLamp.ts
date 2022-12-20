@@ -1,14 +1,20 @@
+const speedMultiplier = 2;
+
 class Ball {
   private x: number;
   private y: number;
   private r: number;
-  private speedX = 10;
-  private speedY = 10;
+  private canvasWidth: number;
+  private canvasHeight: number;
+  private speedX = (Math.random() - 0.5) * speedMultiplier;
+  private speedY = (Math.random() - 0.5) * speedMultiplier;
 
-  constructor(x: number, y: number, r: number) {
+  constructor(x: number, y: number, r: number, canvasWidth: number, canvasHeight: number) {
     this.x = x;
     this.y = y;
     this.r = r;
+    this.canvasWidth = canvasWidth;
+    this.canvasHeight = canvasHeight;
   }
 
   draw(ctx: CanvasRenderingContext2D) {
@@ -18,23 +24,32 @@ class Ball {
   }
 
   move() {
-    this.x += (Math.random() - 0.5) * this.speedX;
-    this.y += (Math.random() - 0.5) * this.speedY;
+    if (this.x + this.r > this.canvasWidth || this.x - this.r < 0) {
+      this.speedX = -this.speedX;
+    }
+    if (this.y + this.r > this.canvasHeight || this.y - this.r < 0) {
+      this.speedY = -this.speedY;
+    }
+    this.x += this.speedX;
+    this.y += this.speedY;
   }
 }
 
 const balls: Ball[] = [];
 
 export const lavaLamp = (ctx: CanvasRenderingContext2D, frameCount: number) => {
+  const canvasWidth = ctx.canvas.width;
+  const canvasHeight = ctx.canvas.height;
+
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
   const centerX = ctx.canvas.width / 2;
   const centerY = ctx.canvas.height / 2;
-  const ballCount = 10;
-  const ballRadius = 50;
+  const ballCount = 30;
   if (balls.length === 0) {
     for (let i = 0; i < ballCount; i++) {
-      balls.push(new Ball(centerX, centerY, ballRadius));
+      const ballRadius = (Math.random() + 1) * 70;
+      balls.push(new Ball(centerX, centerY, ballRadius, canvasWidth, canvasHeight));
     }
   }
 

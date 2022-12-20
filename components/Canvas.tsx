@@ -64,5 +64,5 @@ export const Canvas = ({ draw, mouseMove, ...props }: Props) => {
     };
   });
 
-  return <canvas className='bg-black' ref={canvasRef} {...props} />;
+  return <canvas ref={canvasRef} {...props} />;
 };

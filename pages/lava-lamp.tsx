@@ -4,7 +4,7 @@ import type { NextPage } from 'next';
 
 const LavaLampPage: NextPage = () => {
   return <Layout>
-    <Canvas draw={lavaLamp} />
+    <Canvas draw={lavaLamp} className="blur-[10px] contrast-[20]" />
   </Layout>;
 };
 
