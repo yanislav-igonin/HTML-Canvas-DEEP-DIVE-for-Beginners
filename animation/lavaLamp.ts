@@ -35,10 +35,8 @@ class Ball {
   }
 
   reset(newWidth: number, newHeight: number) {
-    if (newWidth !== this.canvasWidth || newHeight !== this.canvasHeight) {
-      this.canvasWidth = newWidth;
-      this.canvasHeight = newHeight;
-    }
+    this.canvasWidth = newWidth;
+    this.canvasHeight = newHeight;
     this.x = this.canvasWidth * 0.5;
     this.y = this.canvasHeight * 0.5;
   }
