@@ -1,34 +1,35 @@
-const speedMultiplier = 2;
+const speedMultiplier = 10;
 
 class Ball {
   private x: number;
   private y: number;
-  private r: number;
+  private radius: number;
   private canvasWidth: number;
   private canvasHeight: number;
   private speedX = (Math.random() - 0.5) * speedMultiplier;
-  private speedY = (Math.random() - 0.5) * speedMultiplier;
+  private speedY = (Math.random() * 0.5) * speedMultiplier;
 
   constructor(x: number, y: number, r: number, canvasWidth: number, canvasHeight: number) {
-    this.x = x;
-    this.y = y;
-    this.r = r;
+    this.radius = r;
+    this.x = this.radius * 2 + Math.random() * (canvasWidth - this.radius * 4);
+    this.y = -r;
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
   }
 
   draw(ctx: CanvasRenderingContext2D) {
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
     ctx.fill();
   }
 
   move() {
-    if (this.x + this.r > this.canvasWidth || this.x - this.r < 0) {
+    const { x, y, radius, canvasWidth, canvasHeight } = this;
+    if (x + radius > canvasWidth || x - radius < 0) {
       this.speedX = -this.speedX;
     }
-    if (this.y + this.r > this.canvasHeight || this.y - this.r < 0) {
-      this.speedY = -this.speedY;
+    if (y > canvasHeight + radius) {
+      this.y = -radius;
     }
     this.x += this.speedX;
     this.y += this.speedY;
@@ -38,7 +39,7 @@ class Ball {
     this.canvasWidth = newWidth;
     this.canvasHeight = newHeight;
     this.x = this.canvasWidth * 0.5;
-    this.y = this.canvasHeight * 0.5;
+    // this.y = this.canvasHeight * 0.5;
   }
 }
 
