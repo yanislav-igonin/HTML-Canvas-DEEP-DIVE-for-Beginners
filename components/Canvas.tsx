@@ -2,9 +2,9 @@ import { useRef, useEffect, type DetailedHTMLProps, type CanvasHTMLAttributes } 
 
 type Props = DetailedHTMLProps<CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>
   & {
-      draw: (ctx: CanvasRenderingContext2D, frameCount: number) => void,
-      mouseMove?: (e: MouseEvent) => void,
-    };
+  draw: (ctx: CanvasRenderingContext2D, frameCount: number) => void,
+  mouseMove?: (e: MouseEvent) => void,
+};
 
 export const Canvas = ({ draw, mouseMove, ...props }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
