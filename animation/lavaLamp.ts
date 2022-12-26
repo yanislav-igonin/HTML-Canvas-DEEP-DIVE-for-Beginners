@@ -8,6 +8,8 @@ class Ball {
   private canvasHeight: number;
   private speedX = (Math.random() * 0.1) * speedMultiplier;
   private speedY = (Math.random() * 0.5) * speedMultiplier;
+  private gravity = Math.random() * 0.03;
+  private vy = 0;
 
   constructor(r: number, canvasWidth: number, canvasHeight: number) {
     this.radius = r;
@@ -30,6 +32,12 @@ class Ball {
     }
     if (y > canvasHeight + radius) {
       this.y = -radius;
+      this.vy = 0;
+      this.speedY = (Math.random() * 0.5) * speedMultiplier;
+    }
+    if (y > radius * 2) {
+      this.vy += this.gravity;
+      this.speedY += this.vy;
     }
     this.x += this.speedX;
     this.y += this.speedY;
@@ -38,8 +46,7 @@ class Ball {
   reset(newWidth: number, newHeight: number) {
     this.canvasWidth = newWidth;
     this.canvasHeight = newHeight;
-    this.x = this.canvasWidth * 0.5;
-    // this.y = this.canvasHeight * 0.5;
+    this.x = this.radius * 2 + Math.random() * (canvasWidth - this.radius * 4);
   }
 }
 
