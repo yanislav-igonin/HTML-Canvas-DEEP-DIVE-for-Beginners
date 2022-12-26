@@ -6,10 +6,10 @@ class Ball {
   private radius: number;
   private canvasWidth: number;
   private canvasHeight: number;
-  private speedX = (Math.random() - 0.5) * speedMultiplier;
+  private speedX = (Math.random() * 0.1) * speedMultiplier;
   private speedY = (Math.random() * 0.5) * speedMultiplier;
 
-  constructor(x: number, y: number, r: number, canvasWidth: number, canvasHeight: number) {
+  constructor(r: number, canvasWidth: number, canvasHeight: number) {
     this.radius = r;
     this.x = this.radius * 2 + Math.random() * (canvasWidth - this.radius * 4);
     this.y = -r;
@@ -56,13 +56,11 @@ export const lavaLamp = (ctx: CanvasRenderingContext2D, frameCount: number) => {
 
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-  const centerX = ctx.canvas.width / 2;
-  const centerY = ctx.canvas.height / 2;
   const ballCount = 30;
   if (balls.length === 0) {
     for (let i = 0; i < ballCount; i++) {
       const ballRadius = (Math.random() + 1) * 70;
-      balls.push(new Ball(centerX, centerY, ballRadius, canvasWidth, canvasHeight));
+      balls.push(new Ball(ballRadius, canvasWidth, canvasHeight));
     }
   }
 
